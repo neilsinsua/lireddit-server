@@ -5,7 +5,7 @@ import {Field, ObjectType} from "type-graphql";
 @ObjectType()
 //mikro-orm decorator
 @Entity()
-export class Post {
+export class User {
     @Field(() => String)
     @PrimaryKey()
     id!: number;
@@ -19,6 +19,9 @@ export class Post {
     updatedAt = new Date();
 
     @Field(() => String)
+    @Property({type: 'text', unique: true})
+    name!: string;
+
     @Property({type: 'text'})
-    title!: string;
+    password!: string;
 }
